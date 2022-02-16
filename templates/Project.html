@@ -1,0 +1,167 @@
+{% extends my_template %} {% block body %} {% if profile %}
+<script>
+  document.getElementById("myProfile").src = "{{profile.url}}";
+  console.log("{{profile}}");
+</script>
+{% endif %} {% if notifications %}
+<script>
+  document.getElementById("notification").innerText = "{{notifications}}";
+  //   console.log("{{profile}}");
+  
+</script>
+{% endif %}
+
+<section  id="container" class="">
+  <header class="page-header text-center" id="software-header">
+    <div class="row">
+      <div class="small-12 columns">
+        <h1 id="app-title">{{project.name}}</h1>
+
+      <i>  <p style ="color:white" class="large">" {{project.tag_line}} "</p></i>
+      </div>
+    </div>
+
+
+
+
+
+  </header>
+
+    <style>
+      h3{
+        display:block;
+        color:black;
+        background-color:LightSkyBlue;
+      }
+      p{
+        color:black;
+      }
+
+      body{
+        background :#F5F7F7;
+      }
+
+      
+    </style>
+
+  <nav id="software-nav">
+    <div class="row">
+      <div class="large-12 columns">
+        <ul class="left no-bullet">
+          <li>
+            <h4>
+              <a class="active">Story</a>
+            </h4>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+
+ 
+
+  <article id="app-details" class="content-section">
+    <div class="row">
+      <div class="large-9 columns" id="app-details-left">
+        <div id="gallery">
+          <ul data-slick="true">
+           
+
+            <li class="text-center">
+              <a
+
+                data-lightbox="1498923"
+                data-title="{{project.tag_line}}"
+                
+              >
+              <img 
+                  width="600px"
+
+                  alt="No More COVID Confusion! – screenshot 1"
+                  class="software_photo_image image-replacement"
+                  src="{{project.photo.url}}"
+              />
+              </a>
+            
+              <p>
+                <i>{{project.tag_line}}</i>
+              </p>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h3>Domain</h3>
+          <p>{{project.domain}}</p>
+
+          <h3>Project Guide</h3>
+          <p>{{project.guide}}</p>
+
+          <h3>Academic Year</h3>
+          <p>{{project.year}}</p>
+
+          <h3>Semester</h3>
+          <p>{{project.sem}}</p>
+
+          <h3>Inspiration</h3>
+          <p>{{project.inspiration}}</p>
+
+          <h3>What it does</h3>
+
+          <p>{{project.what_it_does}}</p>
+
+         
+          <h3>How we built it</h3>
+
+          <p>{{project.how_we_build}}</p>
+
+
+          <p>{{project.project_id}}</p>
+
+          <h3>Challenges we ran into</h3>
+
+          <p>{{project.challenges}}</p>
+
+          <h3>Accomplishments that we're proud of</h3>
+
+          <p>{{project.accomplishment}}</p>
+
+          <h3>What we learned</h3>
+
+          <p>{{project.we_learned}}</p>
+
+          <h3>What's next for {{project.name}}</h3>
+
+          <p>{{project.whats_next}}</p>
+          {% if project.github %}
+          <a href="{{project.github}}" target="_blank"
+            ><i class="fa fa-github fa-lg" aria-hidden="true"></i> Source
+            Code</a
+          >
+          {% endif %}
+          <br />
+          <br />
+
+          {% if project.hosted %}
+          <a href="{{project.hosted}}" target="_blank"
+            ><i class="fa fa-link fa-lg" aria-hidden="true"></i> Try It</a
+          >
+          {% endif %}
+		   <br />
+          <br />
+		  
+		   {% if project.linkedin %}
+  <a href="{{project.linkedin}}" target="_blank"
+    ><i class="fa fa-linkedin" aria-hidden="true"></i>  Visit LinkedIn </a
+  >
+  {% endif %}
+        </div>
+		
+
+      
+      </div>
+
+  {% endblock %}
+</section>

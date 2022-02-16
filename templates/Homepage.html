@@ -1,0 +1,204 @@
+{% extends my_template %} {% block body %} {% if profile %}
+<script>
+  document.getElementById("myProfile").src = "{{profile.url}}";
+  console.log("{{profile}}");
+</script>
+{% endif %} {% if notifications %}
+<script>
+  document.getElementById("notification").innerText = "{{notifications}}";
+  //   console.log("{{profile}}");
+</script>
+{% endif %}
+<html>
+
+<head>
+  {% load static %}
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+
+  <link rel="stylesheet" href="{% static 'basic/styles.css' %}">
+
+  <link rel="stylesheet" href="{% static 'basic/css2.css' %}">
+
+  <link rel="stylesheet" href="{% static 'basic/css1.css' %}">
+
+  <style>
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+
+    .b-example-divider {
+      height: 3rem;
+      background-color: rgba(0, 0, 0, .1);
+      border: solid rgba(0, 0, 0, .15);
+      border-width: 1px 0;
+      box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+    }
+
+    .bi {
+      vertical-align: -.125em;
+      fill: currentColor;
+    }
+  </style>
+
+
+
+</head>
+
+<body style="background-image: -webkit-linear-gradient(65deg, #A683E3 50%, #E4E9FD 50%);">
+  <div data-homepage-header="true">
+
+
+    {% comment %} <div class="row">
+      <div class="small-12 columns">
+        <div class="pt-5 header-min-height">
+          <div class=" box mission-statement pb-5">
+            <h1 class="large">The home for Projects</h1>
+            <h3 class="large mb-5">
+              Build projects, practice skills, learn technologies, and Do
+              contribute.
+            </h3>
+
+            <a class="button large radius is-marginless">Join the community of Developers in Walchand</a>
+          </div>
+
+        </div>
+      </div>
+    </div> {% endcomment %}
+
+
+
+    <header id="homepage-header" class="b1">
+
+      <!-- image slider start -->
+      <div class="slider">
+        <div class="slides">
+          <!-- radio button start -->
+          <input type="radio" name="radio-btn" id="radio1">
+          <input type="radio" name="radio-btn" id="radio2">
+          <input type="radio" name="radio-btn" id="radio3">
+          <input type="radio" name="radio-btn" id="radio4">
+          <!-- radio button end -->
+          <!-- slide image start -->
+          <div class="slide first">
+            <img src="../media/Homepage1.jpg" alt="">
+          </div>
+          <div class="slide">
+            <img src="../media/p1.jpeg" alt="">
+          </div>
+          <div class="slide">
+            <img src="../media/4.png" alt="">
+          </div>
+          <div class="slide">
+            <img src="../media/4.jpg" alt="">
+          </div>
+          <!-- slide image end -->
+          <!-- automatic naviagation start -->
+          <div class="naviagation-auto">
+            <div class="auto-btn1"></div>
+            <div class="auto-btn2"></div>
+            <div class="auto-btn3"></div>
+            <div class="auto-btn4"></div>
+          </div>
+          <!-- automatic naviagation end -->
+        </div>
+        <!-- manual naviagation start -->
+        <div class="naviagation-manual">
+          <label for="radio1" class="manual-btn"></label>
+          <label for="radio2" class="manual-btn"></label>
+          <label for="radio3" class="manual-btn"></label>
+          <label for="radio4" class="manual-btn"></label>
+
+        </div>
+        <!-- manual naviagation start -->
+      </div>
+      <!-- image slider end -->
+    </header>
+    <h3><a class="button large radius is-marginless" style="width:100%; text-align:center;">Join the community of Developers in Walchand</a></h3>
+  </div>
+  <script type="text/javascript">
+    let counter = 1;
+    setInterval(function () {
+      document.getElementById('radio' + counter).checked = true;
+      counter++;
+      if (counter > 4) {
+        counter = 1;
+      }
+    }, 5000);
+  </script>
+
+
+  
+  <footer>
+    <div class="container">
+      <footer class="row row-cols-5 py-5 my-5 border-top">
+        <div class="col">
+          <img src="../media/1.jfif" alt="">
+          <p class="text-muted">&copy; 2022 WCE Developer Post</p>
+        </div>
+
+
+
+        <div class="col">
+          <h5>About Us</h5>
+          <p align="left">This platform is Centralized collection of the software projects build by students.User can search the projects as per Guide name, Year Of Development,Project Name,Technologies used in project.</p>
+        </div>
+
+        <div class="col">
+          <h5>Contact Us</h5>
+          <ul class="list-unstyled footer-link">
+            <li class="d-flex">
+              <span class="me-3">Address:</span><span>Vishrambag, Sangli, Maharashtra 416415</span>
+            </li>
+            <li class="d-flex">
+              <span class="me-3">Telephone:</span><span>+91-233-2300383</span>
+            </li>
+            <li class="d-flex">
+              <span class="me-3">Email:</span>
+              registrar@walchandsangli.ac.in<span></span>
+            </li>
+
+          </ul>
+        </div>
+
+        <div class="container">
+          <div class="mapouter">
+            <div class="gmap_canvas"><iframe width="300" height="200" id="gmap_canvas"
+                src="https://maps.google.com/maps?q=Walchand%20College%20of%20Engineering,%20Sangli%20&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a
+                href="https://123moviesz.nl"></a><br>
+              <style>
+                .mapouter {
+                  position: relative;
+                  text-align: right;
+                  height: 300px;
+                  width: 480px;
+                }
+              </style><a href="https://googlemapsembedcodegenerator.com"> how to add a map to wordpress </a>
+              
+              <style>
+                .gmap_canvas {
+                  overflow: hidden;
+                  background: none !important;
+                  height: 200px;
+                  width: 300px;
+                }
+              </style>
+            </div>
+          </div>
+        </div>
+      </footer>
+
+
+    </div>
+
+    <script src="/docs/5.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"></script>
+</body>
+
+</html>
+{%endblock%}

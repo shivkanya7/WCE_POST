@@ -1,0 +1,174 @@
+<script>
+  var btn = "";
+</script>
+
+{% extends "basic4.html" %} {% block body %} {% if profile %}
+<script>
+  document.getElementById("myProfile").src = "{{profile.url}}";
+  //console.log("{{profile}}");
+  //console.log("shiv");
+</script>
+{% endif %} {% if notifications %}
+<script>
+  document.getElementById("notification").innerText = "{{notifications}}";
+  console.log("{{profile}}");
+</script>
+{% endif %}
+
+<section id="container" class>
+  <header class="page-header">
+    <div class="row">
+      <div class="large-9 columns">
+        <h1 id="gallery-title" class="shrink">Project Requests</h1>
+      </div>
+    </div>
+  </header>
+
+  <div class="section-dark module-section">
+    <div class="software-module module" id="staff-picks-software-module">
+      <div class="row">
+        <div class="small-12 columns">
+          <div class="section-title bold">
+            <!-- <h4 class="subheader section-title-left">Top projects</h4> -->
+            <span class="section-title-line"></span>
+            <span class="section-title-right">
+              <!-- <a class="button radius tiny" href="#">View all</a> -->
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="row software-row">
+        {% for project in projects %}
+
+        <div class="large-3 small-12 columns gallery-item">
+          <a
+            class="block-wrapper-link fade link-to-software"
+            id="demo"
+            href="{% url 'single_project' project.id project.name|slugify %}"
+          >
+            <div class="software-entry gallery-entry fade visible">
+              <figure>
+                <img
+                  alt=""
+                  class="software_thumbnail_image image-replacement"
+                  onerror="this.onerror=null;this.src=&#39;https://devpost-challengepost.netdna-ssl.com/assets/defaults/thumbnail-placeholder-42bcab8d8178b413922ae2877d8b0868.gif&#39;;"
+                  src="{{project.photo.url}}"
+                />
+
+                <figcaption>
+                  <div class="software-entry-name entry-body">
+                    <h5>{{project.name}}</h5>
+
+                    {% comment %} {% if project.visited %}
+                    <div>True</div>
+                    {% else %}
+                    <div>False</div>
+                    {% endif %} {% endcomment %}
+
+                    <p class="small tagline">{{project.tagline}}</p>
+                  </div>
+                </figcaption>
+              </figure>
+
+              <footer>
+                <form method="POST">
+                  {% csrf_token %}
+                  <input
+                    type="hidden"
+                    name="project_id"
+                    value="{{ project.id }}"
+                  />
+
+                  {% comment %}
+                  <input
+                    type="checkbox"
+                    name="project_id_checkbox"
+                    class="project_id_checkbox"
+                    style="width: 20px; height: 20px"
+                  />
+                  {% endcomment %} {% if project.visited %}
+                  <img src="media/Logo.png" style="width: 20px; height: 20px" />
+                  {% else %} {% endif %}
+
+                  <input
+                    type="submit"
+                    name="status"
+                    style="
+                      background-color: #4caf50;
+                      color: white;
+                      padding: 12px 20px;
+                      border: none;
+                      border-radius: 4px;
+                      margin: 5px;
+                    "
+                    value="Accept"
+                  />
+
+                  <input
+                    type="submit"
+                    name="status"
+                    style="
+                      background-color: #4caf50;
+                      color: white;
+                      padding: 12px 20px;
+                      border: none;
+                      border-radius: 4px;
+                      margin: 5px;
+                    "
+                    value="Reject"
+                  />
+                </form>
+              </footer>
+            </div>
+          </a>
+        </div>
+
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+<footer>
+  <form method="POST">
+    {% csrf_token %} {% for project in projects %}
+    <input type="hidden" name="project_id" value="{{ project.id }}" />
+
+    {%endfor%} {% if visited_btn == False %}
+
+    <input
+      type="submit"
+      name="status"
+      style="
+        background-color: #97d399;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        margin: 15px 70px 15px 15px;
+        float: right;
+      "
+      disabled
+      value="Accept All Projects"
+    />
+
+    {% else %}
+
+    <input
+      type="submit"
+      name="status"
+      style="
+        background-color: #4caf50;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        margin: 15px 70px 15px 15px;
+        float: right;
+      "
+      value="Accept All Projects"
+    />
+
+    {% endif %}
+  </form>
+</footer>
+{% endblock %}
